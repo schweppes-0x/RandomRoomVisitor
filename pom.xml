@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>{ExtensionLauncher}</artifactId>
+    <artifactId>randomroomvisitor</artifactId>
     <packaging>jar</packaging>
     <version>0.1</version>
 
