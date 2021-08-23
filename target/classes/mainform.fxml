@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="294.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RoomVisitor">
+   <children>
+      <Label layoutX="37.0" prefHeight="43.0" prefWidth="257.0" text="Random Room Visitor">
+         <font>
+            <Font name="Source Code Pro Semibold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="37.0" layoutY="85.0" prefHeight="23.0" prefWidth="102.0" text="Loaded rooms">
+         <font>
+            <Font name="Source Code Pro Light" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="21.0" layoutY="58.0" text="Total rooms:">
+         <font>
+            <Font name="Source Code Pro Light" size="13.0" />
+         </font></Label>
+      <ToggleButton fx:id="startToggle" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#toggleVisiting" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #ffad33;" text="START">
+         <font>
+            <Font name="Source Code Pro Light" size="15.0" />
+         </font>
+      </ToggleButton>
+      <Label fx:id="totalRoomsLabel" layoutX="122.0" layoutY="55.0" prefHeight="23.0" prefWidth="51.0" text="0">
+         <font>
+            <Font name="Source Code Pro Light" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="249.0" fitWidth="87.0" layoutX="215.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@schweppes-0x.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="roomsListView" fixedCellSize="22.0" layoutX="15.0" layoutY="108.0" prefHeight="220.0" prefWidth="200.0" />
+      <CheckBox fx:id="aotChk" layoutX="15.0" layoutY="370.0" mnemonicParsing="false" onAction="#toggleAOT" text="Always on top">
+         <font>
+            <Font name="Source Code Pro Light" size="12.0" />
+         </font>
+      </CheckBox>
+   </children>
+</AnchorPane>

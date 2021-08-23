@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="RandomRoomVisitor.jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6bb8f40-00c2-4f0f-ba57-9c447463cfcc" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1x8E2RMkAHa8WMYPbpDbslKFdBy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RandomRoomVisitor" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="ExtensionLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8 (2)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ExtensionLauncher" />
+      <module name="NewRandomRoomVisitor" />
+      <option name="PROGRAM_PARAMETERS" value="-p 9092" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ExtensionLauncher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6bb8f40-00c2-4f0f-ba57-9c447463cfcc" name="Default Changelist" comment="" />
+      <created>1629728107770</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1629728107770</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1504" y="343" key="#ExtensionLauncher" timestamp="1629755414116">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1504" y="343" key="#ExtensionLauncher/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629755414116" />
+    <state x="1805" y="584" width="575" height="271" key="#Notifications" timestamp="1629735930617">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1805" y="584" width="575" height="271" key="#Notifications/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629735930617" />
+    <state x="1169" y="455" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1629760846139">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1169" y="455" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629760846139" />
+    <state x="1725" y="431" key="#com.intellij.ide.util.MemberChooser" timestamp="1629754470250">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1725" y="431" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629754470250" />
+    <state x="1649" y="513" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1629760607171">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1649" y="513" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629760607171" />
+    <state x="1700" y="478" key="FileChooserDialogImpl" timestamp="1629735396091">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1700" y="478" key="FileChooserDialogImpl/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629735396091" />
+    <state width="2521" height="212" key="GridCell.Tab.0.bottom" timestamp="1629761175548">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1881" height="213" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1629756863158" />
+    <state width="2521" height="212" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175548" />
+    <state width="2521" height="212" key="GridCell.Tab.0.center" timestamp="1629761175548">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1881" height="213" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1629756863158" />
+    <state width="2521" height="212" key="GridCell.Tab.0.center/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175548" />
+    <state width="2521" height="212" key="GridCell.Tab.0.left" timestamp="1629761175548">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1881" height="213" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1629756863158" />
+    <state width="2521" height="212" key="GridCell.Tab.0.left/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175548" />
+    <state width="2521" height="212" key="GridCell.Tab.0.right" timestamp="1629761175548">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1881" height="213" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1629756863158" />
+    <state width="2521" height="212" key="GridCell.Tab.0.right/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175548" />
+    <state width="2521" height="497" key="GridCell.Tab.1.bottom" timestamp="1629761175546">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2521" height="497" key="GridCell.Tab.1.bottom/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175546" />
+    <state width="2521" height="497" key="GridCell.Tab.1.center" timestamp="1629761175545">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2521" height="497" key="GridCell.Tab.1.center/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175545" />
+    <state width="2521" height="497" key="GridCell.Tab.1.left" timestamp="1629761175545">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2521" height="497" key="GridCell.Tab.1.left/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175545" />
+    <state width="2521" height="497" key="GridCell.Tab.1.right" timestamp="1629761175545">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="2521" height="497" key="GridCell.Tab.1.right/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761175545" />
+    <state x="507" y="477" width="1633" height="709" key="SettingsEditor" timestamp="1629761098519">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="507" y="477" width="1633" height="709" key="SettingsEditor/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629761098519" />
+    <state width="498" height="443" key="SwitcherDM" timestamp="1629757294363">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="498" height="443" key="SwitcherDM/0.0.2560.1440/-1920.0.1920.1080@0.0.2560.1440" timestamp="1629757294363" />
+  </component>
+</project>
