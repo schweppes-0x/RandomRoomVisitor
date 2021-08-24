@@ -4,6 +4,7 @@
     <root id="archive" name="NewRandomRoomVisitor.jar">
       <element id="module-output" name="NewRandomRoomVisitor" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/G-Earth/G-Earth/1.5.0/G-Earth-1.5.0.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/java/META-INF" />
     </root>
   </artifact>
 </component>
