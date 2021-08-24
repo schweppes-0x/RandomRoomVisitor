@@ -1,5 +1,6 @@
 import gearth.extensions.ExtensionForm;
 import gearth.extensions.ExtensionInfo;
+import gearth.protocol.HMessage;
 import gearth.protocol.HPacket;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -66,13 +67,18 @@ public class RoomVisitor extends ExtensionForm {
                     apiUrl = "https://sandbox.habbo.com/api/public/rooms/";
                     break;
             }});
+
+        intercept(HMessage.Direction.TOCLIENT, "NotificationDialog", this::closeBuilderClubWarning);
     }
 
+    private void closeBuilderClubWarning(HMessage hMessage) {
+        //TODO: Close the notification
+    }
 
 
     //Search for valid rooms through hotel
     public void GenerateRoomID() {
-        while (startToggle.isSelected()) {
+        while (startToggle.isSelected() && rooms.size() < 2000) {
             int randomID = ThreadLocalRandom.current().nextInt(10000000, 40000000 + 1);
             try {
                 JSONObject roomDataJSON = new JSONObject(IOUtils.toString(new URL(apiUrl + randomID).openStream(), StandardCharsets.UTF_8));
