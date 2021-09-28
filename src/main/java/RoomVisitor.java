@@ -1,38 +1,35 @@
 import gearth.extensions.ExtensionForm;
 import gearth.extensions.ExtensionInfo;
-import gearth.protocol.HMessage;
 import gearth.protocol.HPacket;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ToggleButton;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @ExtensionInfo(
         Title =  "Random Room Visitor",
         Description =  "Searches and visits random rooms throughout the hotel.",
-        Version =  "1.0",
+        Version =  "1.1",
         Author =  "schweppes0x"
 )
 
 public class RoomVisitor extends ExtensionForm {
+    private String habboUrl;
+    private Timer visitingTimer;
+    private List<Integer> rooms = new ArrayList<Integer>();
+    private int toGenerate = 50;
 
-    private String apiUrl;
-    private ArrayList<Room> rooms = new ArrayList<Room>();
-    private int totalRoomsFound = 0;
-
-    public ListView roomsListView;
-    public Label totalRoomsLabel;
-    public CheckBox aotChk;
     public ToggleButton startToggle;
+    public Label totalRoomsLabel;
+    public TextField toGenerateText;
+    public CheckBox aotChk;
+    public ListView<String> roomsListView;
 
     @Override
     protected void initExtension() {
@@ -40,112 +37,155 @@ public class RoomVisitor extends ExtensionForm {
         onConnect((host, i, s1, s2, hClient) -> {
             switch (host) {
                 case "game-nl.habbo.com":
-                    apiUrl = "https://www.habbo.nl/api/public/rooms/";
+                    habboUrl = "https://www.habbo.nl/";
                     break;
                 case "game-br.habbo.com":
-                    apiUrl = "https://www.habbo.com.br/api/public/rooms/";
+                    habboUrl = "https://www.habbo.com.br/";
                     break;
                 case "game-tr.habbo.com":
-                    apiUrl = "https://www.habbo.com.tr/api/public/rooms/";
+                    habboUrl = "https://www.habbo.com.tr/";
                     break;
                 case "game-de.habbo.com":
-                    apiUrl = "https://www.habbo.de/api/public/rooms/";
+                    habboUrl = "https://www.habbo.de/";
                     break;
                 case "game-fr.habbo.com":
-                    apiUrl = "https://www.habbo.fr/api/public/rooms/";
+                    habboUrl = "https://www.habbo.fr/";
                     break;
                 case "game-fi.habbo.com":
-                    apiUrl = "https://www.habbo.fi/api/public/rooms/";
+                    habboUrl = "https://www.habbo.fi/";
                     break;
                 case "game-es.habbo.com":
-                    apiUrl = "https://www.habbo.es/api/public/rooms/";
+                    habboUrl = "https://www.habbo.es/";
                     break;
                 case "game-it.habbo.com":
-                    apiUrl = "https://www.habboit/api/public/rooms/";
+                    habboUrl = "https://www.habboit/";
                     break;
                 case "game-s2.habbo.com":
-                    apiUrl = "https://sandbox.habbo.com/api/public/rooms/";
+                    habboUrl = "https://sandbox.habbo.com/";
+                    break;
+                default:
+                    habboUrl = "https://habbo.com/";
                     break;
             }});
 
-        intercept(HMessage.Direction.TOCLIENT, "NotificationDialog", this::closeBuilderClubWarning);
     }
 
-    private void closeBuilderClubWarning(HMessage hMessage) {
-        //TODO: Close the notification
-    }
+    @FXML
+    private void startVisiting() {
+        if(startToggle.isSelected()){
 
-
-    //Search for valid rooms through hotel
-    public void GenerateRoomID() {
-        while (startToggle.isSelected() && rooms.size() < 2000) {
-            int randomID = ThreadLocalRandom.current().nextInt(10000000, 40000000 + 1);
-            try {
-                JSONObject roomDataJSON = new JSONObject(IOUtils.toString(new URL(apiUrl + randomID).openStream(), StandardCharsets.UTF_8));
-                if (roomDataJSON.get("doorMode").equals("open")) {
-                    Room foundRoom = new Room((int) roomDataJSON.get("id"), roomDataJSON.get("name").toString());
-                    if (!rooms.contains(foundRoom)) {
-                        rooms.add(foundRoom);
-                        //ROOM FOUND
-                        Platform.runLater(() -> {
-                            totalRoomsLabel.textProperty().setValue(++totalRoomsFound+"");
-                            roomsListView.getItems().add(foundRoom.toString());
-                        });
+            visitingTimer = new Timer();
+            generateRoom(toGenerate);
+            visitingTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    System.out.println("running again");
+                    System.out.println(rooms.size());
+                    if(rooms.size() < 1){
+                        generateRoom(toGenerate);
+                        try {
+                            sleep(toGenerate*40);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if(rooms.size() >= 1){
+                        int room = rooms.remove(0);
+                        if(sendToServer(new HPacket("{out:GetGuestRoom}{i:" + room + "}{i:0}{i:1}"))){
+                            Platform.runLater(()->{
+                                totalRoomsLabel.textProperty().set(Integer.parseInt(totalRoomsLabel.getText())-1 + "");
+                                roomsListView.getItems().add("Room ID: "+ room);
+                            });
+                        }
                     }
                 }
-            }catch (Exception e) {
-                // NO ROOM FOUND
-            }
-        }
-    }
+            },toGenerate*40,1500);
 
 
-    public void toggleVisiting(ActionEvent actionEvent) {
-        if(startToggle.isSelected()){
-            //Start searching & visiting rooms
-            startToggle.textProperty().setValue("STOP");
-            startToggle.styleProperty().setValue("-fx-background-color:#ba4f7d");
-            new Thread(this::GenerateRoomID).start();
-            new Thread(this::checkShouldVisit).start();
+            Platform.runLater(()->{
+                startToggle.textProperty().set("Turn OFF");
+                startToggle.styleProperty().set("-fx-background-color:#ff5833");
+
+            });
         }else {
-            //Halt all behavior
-            startToggle.textProperty().setValue("START");
-            startToggle.styleProperty().setValue("-fx-background-color:#ffad33");
+            stopVisiting();
 
         }
     }
 
-    //check if we should visit the room
-    private void checkShouldVisit() {
-        while(rooms.size() < 5){
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        while (startToggle.isSelected() && rooms.size() > 0){
-            visitNextRoom();
-        }
-    }
-
-    //visit the 0th room in our rooms ArrayList and wait for 1.8 seconds
-    private void visitNextRoom() {
+    private void sleep(int i) throws Exception {
         try{
-            Thread.sleep(1800);
-            sendToServer(new HPacket("{out:GetGuestRoom}{i:" + rooms.remove(0).getID() + "}{i:0}{i:1}"));
+            Thread.sleep(i);
+        }catch (Exception e){
+            throw e;
         }
-        catch (Exception e){
-            System.out.println(e);
-        };Platform.runLater(()->{
-            roomsListView.getItems().remove(0);
-            totalRoomsLabel.textProperty().setValue(--totalRoomsFound+"");
+    }
+
+    @Override
+    protected void onHide() {
+        stopVisiting();
+    }
+
+    private void stopVisiting(){
+        if(visitingTimer == null)
+            return;
+
+        visitingTimer.cancel();
+        visitingTimer = null;
+
+        Platform.runLater(()->{
+            startToggle.textProperty().set("Turn ON");
+            startToggle.styleProperty().set("-fx-background-color:#ffad33");
         });
     }
 
-    //AOT
-    public void toggleAOT(ActionEvent actionEvent) {
+    private void generateRoom(int n){
+        List<Integer> randomIds = new ArrayList<>();
+        List<Integer> finals;
+
+        Random random = new Random();
+
+        for(int i = 0; i < n; i++){
+            randomIds.add(30000000 + random.nextInt(10000000));
+        }
+        System.out.println(randomIds.size());
+        finals = randomIds.parallelStream()
+                .distinct()
+                .map(i -> {
+                    try{
+                        return IOUtils.toString(new URL(String.format("%Sapi/public/rooms/%d", habboUrl, i)));
+                    } catch (Exception e){
+                        return null;
+                    }
+                })
+                .filter(Objects::nonNull)
+                .map(JSONObject::new)
+                .filter(jsonObject -> jsonObject.get("doorMode").equals("open"))
+                .map(e -> e.getInt("id"))
+                .collect(Collectors.toList());
+
+        if(finals.size() > 0){
+
+            rooms.addAll(finals);
+            System.out.println("[!] - Finished searching");
+            Platform.runLater(()->{
+                totalRoomsLabel.textProperty().set(rooms.size()+"");
+
+            });
+        }else {
+            System.out.println("[!] - No rooms found..");
+        }
+    }
+
+    public void toggleAOT(javafx.event.ActionEvent actionEvent) {
         primaryStage.setAlwaysOnTop(aotChk.isSelected());
     }
-}
 
+    public void changeValueOfGenerate(KeyEvent keyEvent) {
+        try{
+            toGenerate = Integer.parseInt(toGenerateText.getText());
+        }catch (Exception e){
+            //NON-digit was entered
+        }
+    }
+}

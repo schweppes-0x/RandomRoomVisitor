@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>{ExtensionLauncher}</artifactId>
+    <artifactId>RandomRoomVisitor</artifactId>
     <packaging>jar</packaging>
     <version>0.1</version>
 
@@ -14,9 +14,10 @@
             <!-- Embedded FXML and CSS resources -->
             <resource>
                 <filtering>false</filtering>
-                <directory>src/main/java</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.fxml</include>
+                    <include>**/*.png</include>
                     <include>**/*.css</include>
                 </includes>
             </resource>
